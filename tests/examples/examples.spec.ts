@@ -24,6 +24,30 @@ test.describe('Example of data-driven tests', () => {
     });
 });
 
+test('Example of suppressing failures with try-catch', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+
+  await test.step('Open login page', async () => {
+    await loginPage.open();
+    await loginPage.assertPageOpen();
+  });
+
+  await test.step('Enter invalid credentials', async () => {
+    await loginPage.enterUsername('standard_user');
+    await loginPage.enterPassword('invalid pass');
+  });
+
+  await test.step('Submit login and verify error', async () => {
+    await loginPage.pressLoginButton();
+
+    try {
+      await loginPage.assertLoginSuccess();
+    } catch {
+      console.log('failure suppressed');
+    }
+  });
+});
+
 test('Example of setting failure reason', async ({ page }) => {
   const loginPage = new LoginPage(page);
 
