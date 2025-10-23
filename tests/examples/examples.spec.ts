@@ -3,6 +3,27 @@ import { LoginPage } from '../../pages/Login';
 import { cb } from '@cloudbeat/playwright';
 import { FailureReasonEnum } from '@cloudbeat/types';
 
+const records = [
+  { name: 'foo' },
+  { name: 'bar' },
+  { name: 'qaz' },
+];
+
+test.describe('Example of data-driven tests', () => {
+  test.beforeEach(async ({ page }) => {
+    console.log('before each');
+  });
+
+  test.describe.configure({ timeout: 10*1000 });
+
+  records
+    .forEach((record) => {
+      test(`Data driven test - ${record.name}`, async ({ page }) => {
+        console.log(`executing test for data record - ${record.name}`)
+      });
+    });
+});
+
 test('Example of setting failure reason', async ({ page }) => {
   const loginPage = new LoginPage(page);
 
