@@ -116,10 +116,5 @@ test('Example of throwing an error outside a step', async ({ page }) => {
     await loginPage.assertPageOpen();
   });
 
-  await test.step('Enter valid credentials', async () => {
-    await loginPage.enterUsername('standard_user');
-    await loginPage.enterPassword('secret_sauce');
-  });
-
-  throw new Error("Error hrown outside a step");
+  throw new Error("Error thrown outside a step");
 });
