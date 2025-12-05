@@ -107,3 +107,14 @@ test('Example of intercepting browser console logs', async ({ page }) => {
     await loginPage.assertLoginSuccess();
   });
 });
+
+test('Example of throwing an error outside a step', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+
+  await test.step('Open login page', async () => {
+    await loginPage.open();
+    await loginPage.assertPageOpen();
+  });
+
+  throw new Error("Error thrown outside a step");
+});
