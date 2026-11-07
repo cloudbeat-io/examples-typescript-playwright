@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { LoginPage } from '../../pages/Login';
 
-test.describe('Login', () => {
+test.describe('Login', { tag: '@sanity' }, () => {
   test('Standard user login behaviour', async ({ page }) => {
     const loginPage = new LoginPage(page);
 
@@ -21,7 +21,7 @@ test.describe('Login', () => {
     });
   });
 
-  test('Locked out user login behaviour', async ({ page }) => {
+  test('Locked out user login behaviour', { tag: '@sanity' },async ({ page }) => {
     const loginPage = new LoginPage(page);
 
     await test.step('Open login page', async () => {
@@ -40,7 +40,7 @@ test.describe('Login', () => {
     });
   });
 
-  test('Invalid user login behaviour', async ({ page }) => {
+  test('Invalid user login behaviour', { tag: '@sanity' },async ({ page }) => {
     const loginPage = new LoginPage(page);
 
     await test.step('Open login page', async () => {

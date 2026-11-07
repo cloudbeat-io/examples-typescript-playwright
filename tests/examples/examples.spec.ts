@@ -9,7 +9,7 @@ const records = [
   { name: 'qaz' },
 ];
 
-test.describe('Example of data-driven tests', () => {
+test.describe('Example of data-driven tests', { tag: ['@examples', '@sanity'] }, () => {
   test.beforeEach(async ({ page }) => {
     console.log('before each');
   });
@@ -24,7 +24,7 @@ test.describe('Example of data-driven tests', () => {
     });
 });
 
-test('Example of suppressing failures with try-catch', async ({ page }) => {
+test('Example of suppressing failures with try-catch', { tag: ['@examples', '@sanity'] }, async ({ page }) => {
   const loginPage = new LoginPage(page);
 
   await test.step('Open login page', async () => {
@@ -48,7 +48,7 @@ test('Example of suppressing failures with try-catch', async ({ page }) => {
   });
 });
 
-test('Example of setting failure reason', async ({ page }) => {
+test('Example of setting failure reason', { tag: ['@examples', '@sanity'] }, async ({ page }) => {
   const loginPage = new LoginPage(page);
 
   await test.step('Open login page', async () => {
@@ -73,7 +73,7 @@ test('Example of setting failure reason', async ({ page }) => {
   });
 });
 
-test('Example of setting test attribute and output data', async ({ page }) => {
+test('Example of setting test attribute and output data', { tag: ['@examples', '@sanity'] }, async ({ page }) => {
   const loginPage = new LoginPage(page);
 
   await test.step('Open login page', async () => {
@@ -85,7 +85,7 @@ test('Example of setting test attribute and output data', async ({ page }) => {
   cb.addOutputData('someOutputDataName', 'output data value');
 });
 
-test('Example of intercepting browser console logs', async ({ page }) => {
+test('Example of intercepting browser console logs', { tag: ['@examples', '@sanity'] }, async ({ page }) => {
   page.on('console', (message) => {
     cb.onConsole(message);
   });
@@ -108,7 +108,7 @@ test('Example of intercepting browser console logs', async ({ page }) => {
   });
 });
 
-test('Example of throwing an error outside a step', async ({ page }) => {
+test('Example of throwing an error outside a step', { tag: ['@examples', '@sanity'] }, async ({ page }) => {
   const loginPage = new LoginPage(page);
 
   await test.step('Open login page', async () => {
