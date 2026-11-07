@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 import { LoginPage } from '../../pages/Login';
 import { ProductsPage } from '../../pages/Products';
 
-test.describe('Products', () => {
+test.describe('Products', { tag: '@products' }, () => {
   test('Add and remove products from cart', async ({ page }) => {
     const loginPage = new LoginPage(page);
     const productsPage = new ProductsPage(page);
